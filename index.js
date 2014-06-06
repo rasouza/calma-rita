@@ -15,6 +15,10 @@ io.sockets.on('connection', function (socket) {
 		// to everyone except the originating client.
 		socket.broadcast.emit('moving', data);
 	});
+
+	socket.on('drawing', function (data) {
+		socket.broadcast.emit('repaint', data);
+	});
 });
 
 http.listen(3000, function(){
